@@ -15,13 +15,13 @@
 
 const refs = {
     input: document.querySelector('#controls').firstElementChild,
-    render: document.querySelector('[data-action="render"]'),
-    destroy: document.querySelector('[data-action="destroy"]'),
-    boxes: document.querySelector('#boxes'),
+    renderBtn: document.querySelector('[data-action="render"]'),
+    destroyBtn: document.querySelector('[data-action="destroy"]'),
+    boxesDiv: document.querySelector('#boxes'),
 }
 
-refs.render.addEventListener('click', getAmount);
-refs.destroy.addEventListener('click', destroyBoxes)
+refs.renderBtn.addEventListener('click', getAmount);
+refs.destroyBtn.addEventListener('click', destroyBoxes)
 
 function getAmount () {
     const amount = +document.querySelector('#controls input').value;
@@ -37,14 +37,12 @@ function createBoxes (amount) {
         div.style.height = `${20 + i * 10}px`;
         
         div.style.marginBottom = '10px';
-        refs.boxes.append(div);
-
-        console.log(div)
+        refs.boxesDiv.append(div);
     }
 }
 
 function destroyBoxes () {
-    refs.boxes.innerHTML = '';
+    refs.boxesDiv.innerHTML = '';
     refs.input.value = 0;
 }
 
