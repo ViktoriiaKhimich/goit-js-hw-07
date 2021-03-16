@@ -24,21 +24,28 @@ refs.renderBtn.addEventListener('click', getAmount);
 refs.destroyBtn.addEventListener('click', destroyBoxes)
 
 function getAmount () {
-    const amount = +document.querySelector('#controls input').value;
+    const amount = +refs.input.value;
     createBoxes(amount);
 }
 
 function createBoxes (amount) {
+    let width = 30;
+    let height = 30;
+    const arrayDiv = [];
+  
     for (let i = 1; i <= amount; i += 1) {
         const div = document.createElement('div');
-    
+
         div.style.backgroundColor = 'pink';
-        div.style.width = `${20 + i * 10}px`;
-        div.style.height = `${20 + i * 10}px`;
-        
         div.style.marginBottom = '10px';
-        refs.boxesDiv.append(div);
+        div.style.width = `${width}px`;
+        div.style.height = `${height}px`;
+        width += 10;
+        height += 10;
+        
+        arrayDiv.push(div);
     }
+    refs.boxesDiv.append(...arrayDiv);
 }
 
 function destroyBoxes () {
